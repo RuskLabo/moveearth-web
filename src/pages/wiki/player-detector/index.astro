@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="プレイヤー検知ブロック">
+  <article class="mx-auto max-w-4xl px-5 py-20 md:px-10">
+    <a href="/wiki/" class="text-sm text-primary">← Wikiに戻る</a>
+    <p class="mono mt-12 text-sm text-secondary">MOVEEARTH-ADDTIONAL / PLAYER DETECTOR</p>
+    <h1 class="mt-3 text-4xl font-black md:text-5xl">プレイヤー検知ブロック</h1>
+    <p class="mt-6 max-w-3xl text-lg leading-9 text-base-content/80">プレイヤー検知ブロックは、一定範囲内にいるプレイヤーを検知し、所有者やホワイトリストに登録されたプレイヤー以外の接近を通知するMoveEarth-Addtionalの独自ブロックです。</p>
+
+    <div class="mt-10 grid gap-4 md:grid-cols-3">
+      <div class="card border border-white/10 bg-base-200 p-5"><p class="mono text-xs text-secondary">DETECTION RANGE</p><p class="mt-2 text-3xl font-black text-primary">100 blocks</p><p class="mt-2 text-sm text-base-content/60">ブロックを中心とした検知範囲</p></div>
+      <div class="card border border-white/10 bg-base-200 p-5"><p class="mono text-xs text-secondary">SCAN INTERVAL</p><p class="mt-2 text-3xl font-black text-primary">5 seconds</p><p class="mt-2 text-sm text-base-content/60">検知処理の実行間隔</p></div>
+      <div class="card border border-white/10 bg-base-200 p-5"><p class="mono text-xs text-secondary">GLOW RANGE</p><p class="mt-2 text-3xl font-black text-primary">30 blocks</p><p class="mt-2 text-sm text-base-content/60">接近者を発光させる範囲</p></div>
+    </div>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-black">設置と所有者</h2>
+      <div class="mt-5 rounded-box border border-white/10 bg-base-200 p-6">
+        <ol class="list-inside list-decimal space-y-3 leading-8 text-base-content/80">
+          <li>プレイヤー検知ブロックを設置すると、設置したプレイヤーが所有者として登録されます。</li>
+          <li>所有者がブロックを操作すると、ホワイトリストと決済設定のGUIを開けます。</li>
+          <li>所有者以外が操作しても、設定の変更やGUIの利用はできません。</li>
+          <li>ブロックを破壊すると、登録されている検知用のダミーエンティティも削除されます。</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-black">プレイヤーの検知</h2>
+      <div class="mt-5 grid gap-4 md:grid-cols-2">
+        <div class="card border border-white/10 bg-base-200 p-6"><h3 class="text-xl font-bold">検知対象</h3><p class="mt-3 leading-8 text-base-content/75">検知範囲内にいるオンラインのプレイヤーを、約5秒ごとに確認します。所有者とホワイトリストに登録されたプレイヤーは検知対象から除外されます。</p></div>
+        <div class="card border border-white/10 bg-base-200 p-6"><h3 class="text-xl font-bold">通知</h3><p class="mt-3 leading-8 text-base-content/75">未登録のプレイヤーを検知すると、所有者とホワイトリスト登録者に、プレイヤー名とブロックからの距離が通知されます。</p></div>
+        <div class="card border border-white/10 bg-base-200 p-6"><h3 class="text-xl font-bold">発光表示</h3><p class="mt-3 leading-8 text-base-content/75">検知対象が30ブロック以内にいる場合、そのプレイヤーに発光表示を付与します。30ブロックを超えると発光表示は解除されます。</p></div>
+        <div class="card border border-white/10 bg-base-200 p-6"><h3 class="text-xl font-bold">有効化前の待機</h3><p class="mt-3 leading-8 text-base-content/75">設置直後はウォームアップ時間として20分間、プレイヤー検知を行いません。</p></div>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-black">ホワイトリスト設定</h2>
+      <div class="mt-5 rounded-box border border-white/10 bg-base-200 p-6">
+        <ul class="list-disc space-y-3 pl-5 leading-8 text-base-content/80">
+          <li>所有者専用のGUIから、プレイヤー名を追加・削除できます。</li>
+          <li>オンラインプレイヤーの一覧から、対象者を選んで登録することもできます。</li>
+          <li>ホワイトリストは所有者ごとに保存され、検知時の除外対象として利用されます。</li>
+          <li>所有者自身は、ホワイトリストに登録されていなくても常に除外されます。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-black">決済と稼働状態</h2>
+      <div class="mt-5 rounded-box border border-secondary/30 bg-secondary/10 p-6">
+        <ul class="list-disc space-y-3 pl-5 leading-8 text-base-content/80">
+          <li>GUIの決済タブから、利用可能な銀行口座を選択できます。</li>
+          <li>稼働には、指定された銀行口座と決済設定が必要です。</li>
+          <li>決済額は2時間ごとに金貨5枚です。</li>
+          <li>決済に失敗すると、ブロックは自動的に停止し、所有者へ通知されます。</li>
+          <li>停止中はダミーエンティティが削除され、プレイヤー検知も行われません。</li>
+          <li>稼働中は、ダミーエンティティがブロック位置に表示されます。ただし通常のプレイヤーからは見えない設定です。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-black">設置制限</h2>
+      <div class="mt-5 rounded-box border border-error/30 bg-error/10 p-6">
+        <p class="leading-8 text-base-content/80">既存のプレイヤー検知ブロックから、チャンク座標のX・Z方向の差が3以内となる位置には設置できません。近接した検知範囲が重なり、サーバー負荷や通知の重複が発生することを防ぐための制限です。</p>
+      </div>
+    </section>
+
+    <div class="alert mt-12 border border-primary/20 bg-primary/10"><span>このブロックを利用する場合は、検知対象となるプレイヤーへの配慮と、サーバー規約をあわせて確認してください。</span></div>
+  </article>
+</BaseLayout>

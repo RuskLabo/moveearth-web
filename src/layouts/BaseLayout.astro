@@ -1,0 +1,28 @@
+---
+import '../styles/global.css';
+const { title = 'MoveEarth', description = 'プレイヤーの選択で歴史が作られるMinecraftサーバー。' } = Astro.props;
+---
+<!doctype html>
+<html lang="ja" data-theme="moveearth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <title>{title} | MoveEarth</title>
+  </head>
+  <body class="min-h-screen text-base-content">
+    <header class="navbar border-b border-white/10 bg-earth-950/90 px-5 md:px-10">
+      <div class="flex-1"><a href="/" class="text-xl font-black tracking-widest">MOVE<span class="text-primary">EARTH</span></a></div>
+      <nav class="hidden gap-2 md:flex">
+        <a href="/wiki/" class="btn btn-ghost">Wiki</a>
+        <a href="/join/" class="btn btn-ghost">参加方法</a>
+        <a href="https://discord.gg/QNquTTTdZh" class="btn btn-primary">Discord</a>
+      </nav>
+      <div class="dropdown dropdown-end md:hidden"><button class="btn btn-ghost text-xl" aria-label="メニュー">☰</button><ul class="menu dropdown-content z-20 mt-3 w-48 rounded-box bg-base-200 p-2 shadow"><li><a href="/wiki/">Wiki</a></li><li><a href="/join/">参加方法</a></li><li><a href="https://discord.gg/QNquTTTdZh">Discord</a></li></ul></div>
+    </header>
+    <main><slot /></main>
+    <footer class="border-t border-white/10 bg-earth-950 px-5 py-10 md:px-10">
+      <div class="mx-auto flex max-w-6xl flex-col justify-between gap-4 text-sm text-base-content/60 md:flex-row"><p class="font-bold tracking-widest text-base-content">MOVE<span class="text-primary">EARTH</span></p><p>Minecraft Java Edition専用サーバー</p></div>
+    </footer>
+  </body>
+</html>

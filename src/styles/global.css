@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap');
+
+:root { font-family: 'Zen Kaku Gothic New', sans-serif; }
+body { background: #101713; }
+.mono { font-family: 'IBM Plex Mono', monospace; }
+.pixel-border { box-shadow: 4px 4px 0 rgba(0, 0, 0, .32); }
+.hero-glow { background: radial-gradient(circle at 50% 35%, rgba(117,168,75,.18), transparent 55%); }
