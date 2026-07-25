@@ -3,5 +3,6 @@ import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
   integrations: [tailwind()],
-  site: 'https://moveearth.example.com'
+  site: 'https://rusklabo.github.io/moveearth-web',
+  base: '/moveearth-web'
 });
