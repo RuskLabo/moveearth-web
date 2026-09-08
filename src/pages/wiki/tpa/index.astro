@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout title="TPA">
+  <article class="mx-auto max-w-4xl px-5 py-20 md:px-10">
+    <a href={`${base}/wiki/`} class="text-sm text-primary">← Wikiに戻る</a>
+    <p class="mono mt-12 text-sm text-secondary">MOVEEARTH-ADDTIONAL / TPA</p>
+    <h1 class="mt-3 text-4xl font-black md:text-5xl">TPA</h1>
+    <p class="mt-6 max-w-3xl text-lg leading-9 text-base-content/80">TPAは、相手の承認を受けて安全な拠点へ移動するためのテレポート申請システムです。移動先には稼働中のプレイヤー検知ブロックが必要で、無制限な移動や戦闘中の逃走を防ぐための制限があります。</p>
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-black">利用の流れ</h2>
+      <div class="mt-5 rounded-box border border-white/10 bg-base-200 p-6">
+        <ol class="list-inside list-decimal space-y-3 leading-8 text-base-content/80">
+          <li>移動したい相手にTPAを申請します。</li>
+          <li>相手が承認すると、両者に20秒間のウォームアップが始まります。</li>
+          <li>ウォームアップ中は、両者が移動・次元移動・戦闘をせずに待機します。</li>
+          <li>完了後、申請者は相手の周辺にある安全な場所へテレポートします。</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-black">移動先の条件</h2>
+      <div class="mt-5 grid gap-4 md:grid-cols-2">
+        <div class="card border border-white/10 bg-base-200 p-6"><h3 class="text-xl font-bold">検知ブロックが必要</h3><p class="mt-3 leading-8 text-base-content/75">受信者は、稼働中かつ設置後20分を経過したプレイヤー検知ブロックの半径100ブロック以内にいる必要があります。</p></div>
+        <div class="card border border-white/10 bg-base-200 p-6"><h3 class="text-xl font-bold">所属の確認</h3><p class="mt-3 leading-8 text-base-content/75">受信者は検知ブロックの所有者、または所有者のホワイトリストに登録されたプレイヤーでなければなりません。</p></div>
+        <div class="card border border-white/10 bg-base-200 p-6"><h3 class="text-xl font-bold">安全な到着地点</h3><p class="mt-3 leading-8 text-base-content/75">受信者の周囲から、安全な床・十分な空間・液体なし・ワールド境界内という条件を満たす地点を探します。見つからなければTPAは中止されます。</p></div>
+        <div class="card border border-white/10 bg-base-200 p-6"><h3 class="text-xl font-bold">検知ブロックの停止</h3><p class="mt-3 leading-8 text-base-content/75">決済切れなどで検知ブロックが停止している場合、その範囲をTPAの移動先には使えません。</p></div>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-black">通常TPAの制限</h2>
+      <div class="mt-5 grid gap-4 md:grid-cols-3">
+        <div class="card border border-white/10 bg-base-200 p-5"><p class="mono text-xs text-secondary">OPENING DAY LIMIT</p><p class="mt-2 text-3xl font-black text-primary">2回</p><p class="mt-2 text-sm text-base-content/60">成功したTPAの上限</p></div>
+        <div class="card border border-white/10 bg-base-200 p-5"><p class="mono text-xs text-secondary">TRAVELER COOLDOWN</p><p class="mt-2 text-3xl font-black text-primary">60分</p><p class="mt-2 text-sm text-base-content/60">移動したプレイヤーの再利用待機</p></div>
+        <div class="card border border-white/10 bg-base-200 p-5"><p class="mono text-xs text-secondary">HOST COOLDOWN</p><p class="mt-2 text-3xl font-black text-primary">15分</p><p class="mt-2 text-sm text-base-content/60">受信者が次のTPAを受けるまでの待機</p></div>
+      </div>
+      <p class="mt-4 leading-8 text-base-content/75">回数の区切りは毎日18:00 JSTです。クールダウンはログアウトやサーバー再起動を挟んでも維持されます。</p>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-black">初心者TPA枠</h2>
+      <div class="mt-5 rounded-box border border-primary/20 bg-primary/10 p-6">
+        <ul class="list-disc space-y-3 pl-5 leading-8 text-base-content/80">
+          <li>総プレイ時間が6時間未満のプレイヤーには、生涯3回の初心者TPA枠があります。</li>
+          <li>初心者枠の利用は通常TPAの1日2回の上限を消費せず、移動者側の60分クールダウンも発生しません。</li>
+          <li>ただし、受信者側には3分のクールダウンが発生します。</li>
+          <li>初心者枠を使い切るか、プレイ時間が6時間に達した時点で通常TPAの条件が適用されます。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-black">申請できない・中止される条件</h2>
+      <div class="mt-5 rounded-box border border-error/30 bg-error/10 p-6">
+        <ul class="list-disc space-y-3 pl-5 leading-8 text-base-content/80">
+          <li>申請者または受信者が死亡・観戦・乗り物搭乗中・PvPイベント参加中である。</li>
+          <li>申請者または受信者が、ダメージを与えた／受けた直後15秒間の戦闘ロック中である。</li>
+          <li>通常TPAの回数上限、移動者クールダウン、または受信者クールダウンに達している。</li>
+          <li>承認待ちの申請が60秒で期限切れになる。</li>
+          <li>ウォームアップ中にどちらかが約0.25ブロック以上移動する、次元を移動する、戦闘状態になる、またはログアウトする。</li>
+          <li>検知ブロックの条件、または安全な到着地点の条件を満たせない。</li>
+        </ul>
+      </div>
+      <p class="mt-4 text-sm text-base-content/60">申請後は10秒間、次の申請を送れません。</p>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-black">プレイヤー用コマンド</h2>
+      <div class="mt-5 overflow-x-auto rounded-box border border-white/10 bg-base-200">
+        <table class="table"><thead><tr><th>コマンド</th><th>用途</th></tr></thead><tbody><tr><td><code>/tpa &lt;player&gt;</code></td><td>指定プレイヤーへTPAを申請</td></tr><tr><td><code>/tpa request &lt;player&gt;</code></td><td>TPAを申請</td></tr><tr><td><code>/tpaccept [player]</code></td><td>申請を承認。複数ある場合はプレイヤー名を指定</td></tr><tr><td><code>/tpdeny [player]</code></td><td>申請を拒否。複数ある場合はプレイヤー名を指定</td></tr><tr><td><code>/tpcancel</code></td><td>自分の申請または進行中のウォームアップを中止</td></tr><tr><td><code>/tpacancel</code></td><td><code>/tpcancel</code>の旧表記エイリアス</td></tr><tr><td><code>/tpa status</code></td><td>残り回数・初心者枠・リセット時刻・クールダウンを確認</td></tr></tbody></table>
+      </div>
+      <p class="mt-3 text-sm text-base-content/60"><code>/tpa accept</code>、<code>/tpa deny</code>、<code>/tpa cancel</code>も同様に利用できます。</p>
+    </section>
+  </article>
+</BaseLayout>
