@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout title="銃解体">
+  <article class="mx-auto max-w-4xl px-5 py-20 md:px-10">
+    <a href={`${base}/wiki/`} class="text-sm text-primary">← Wikiに戻る</a>
+    <p class="mono mt-12 text-sm text-secondary">MOVEEARTH-ADDTIONAL / GUN DISASSEMBLY</p>
+    <h1 class="mt-3 text-4xl font-black md:text-5xl">TaCZ銃解体</h1>
+    <p class="mt-6 max-w-3xl text-lg leading-9 text-base-content/80">不要になったTaCZの銃は、Createの粉砕で解体できます。製作時に使った素材の一部を取り戻せるため、装備更新や資源の循環に利用できます。</p>
+    <div class="mt-10 grid gap-4 md:grid-cols-3"><div class="card border border-white/10 bg-base-200 p-5"><p class="mono text-xs text-secondary">MACHINE</p><p class="mt-2 text-3xl font-black text-primary">Crushing</p><p class="mt-2 text-sm text-base-content/60">Createの粉砕レシピ</p></div><div class="card border border-white/10 bg-base-200 p-5"><p class="mono text-xs text-secondary">RETURN RATE</p><p class="mt-2 text-3xl font-black text-primary">60%</p><p class="mt-2 text-sm text-base-content/60">製作素材ごとの還元率</p></div><div class="card border border-white/10 bg-base-200 p-5"><p class="mono text-xs text-secondary">PROCESS TIME</p><p class="mt-2 text-3xl font-black text-primary">10 sec</p><p class="mt-2 text-sm text-base-content/60">粉砕にかかる時間</p></div></div>
+    <section class="mt-12"><h2 class="text-2xl font-black">解体方法</h2><ol class="mt-5 list-inside list-decimal space-y-3 rounded-box border border-white/10 bg-base-200 p-6 leading-8 text-base-content/80"><li>Createの粉砕機を稼働できる状態にします。</li><li>解体したいTaCZの銃を粉砕レシピの入力として投入します。</li><li>約10秒後、元のガンスミステーブル製作レシピに含まれる素材が合計60%相当で出力されます。</li></ol></section>
+    <section class="mt-12"><h2 class="text-2xl font-black">還元の考え方</h2><div class="mt-5 rounded-box border border-primary/20 bg-primary/10 p-6 leading-8 text-base-content/80"><p>銃ごとに、その銃の製作レシピを読み取って粉砕レシピが自動生成されます。各素材は60%を基準に、整数分は確定、端数は確率で追加出力されます。たとえば製作に5個必要な素材は3個が確定で戻ります。製作に1個必要な素材は60%の確率で1個戻ります。</p></div></section>
+    <section class="mt-12"><h2 class="text-2xl font-black">対象と注意</h2><div class="mt-5 rounded-box border border-white/10 bg-base-200 p-6"><ul class="list-disc space-y-3 pl-5 leading-8 text-base-content/80"><li>対象は、TaCZが実際の銃として認識する完成品です。弾薬やアタッチメント単体は解体対象ではありません。</li><li>銃固有のIDで判定するため、使用済みの銃やカスタマイズ済みの銃も、同じ銃種として正しいレシピに対応します。</li><li>解体レシピはサーバー起動時とデータパックの完全リロード時に生成されます。GunPackのレシピ変更後は、運営による再起動またはリロードが必要です。</li><li>銃解体を行うと、ガンスミスのJobs XPも獲得できます。詳しくは<a href={`${base}/wiki/jobs/`} class="text-primary underline">Jobsシステム</a>を確認してください。</li></ul></div></section>
+  </article>
+</BaseLayout>

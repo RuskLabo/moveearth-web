@@ -7,69 +7,53 @@ const base = import.meta.env.BASE_URL;
     <a href={`${base}/wiki/`} class="text-sm text-primary">← Wikiに戻る</a>
     <p class="mono mt-12 text-sm text-secondary">MOVEEARTH-ADDTIONAL / PLAYER DETECTOR</p>
     <h1 class="mt-3 text-4xl font-black md:text-5xl">プレイヤー検知ブロック</h1>
-    <p class="mt-6 max-w-3xl text-lg leading-9 text-base-content/80">プレイヤー検知ブロックは、一定範囲内にいるプレイヤーを検知し、所有者やホワイトリストに登録されたプレイヤー以外の接近を通知するMoveEarth-Addtionalの独自ブロックです。</p>
+    <p class="mt-6 max-w-3xl text-lg leading-9 text-base-content/80">周囲にいるプレイヤーを検知し、侵入通知・ホワイトリストによる味方判定・TPAの到着地点を担う、MoveEarth-Addtionalの独自ブロックです。基地の入口や交易拠点に置くことで、人の出入りを把握できます。</p>
 
     <div class="mt-10 grid gap-4 md:grid-cols-3">
-      <div class="card border border-white/10 bg-base-200 p-5"><p class="mono text-xs text-secondary">DETECTION RANGE</p><p class="mt-2 text-3xl font-black text-primary">100 blocks</p><p class="mt-2 text-sm text-base-content/60">ブロックを中心とした検知範囲</p></div>
-      <div class="card border border-white/10 bg-base-200 p-5"><p class="mono text-xs text-secondary">SCAN INTERVAL</p><p class="mt-2 text-3xl font-black text-primary">5 seconds</p><p class="mt-2 text-sm text-base-content/60">検知処理の実行間隔</p></div>
-      <div class="card border border-white/10 bg-base-200 p-5"><p class="mono text-xs text-secondary">GLOW RANGE</p><p class="mt-2 text-3xl font-black text-primary">30 blocks</p><p class="mt-2 text-sm text-base-content/60">接近者を発光させる範囲</p></div>
+      <div class="card border border-white/10 bg-base-200 p-5"><p class="mono text-xs text-secondary">DETECTION RANGE</p><p class="mt-2 text-3xl font-black text-primary">100 blocks</p><p class="mt-2 text-sm text-base-content/60">ブロック中心からの検知範囲</p></div>
+      <div class="card border border-white/10 bg-base-200 p-5"><p class="mono text-xs text-secondary">SCAN INTERVAL</p><p class="mt-2 text-3xl font-black text-primary">5 seconds</p><p class="mt-2 text-sm text-base-content/60">検知と支払い状態の確認間隔</p></div>
+      <div class="card border border-white/10 bg-base-200 p-5"><p class="mono text-xs text-secondary">WARM-UP</p><p class="mt-2 text-3xl font-black text-primary">20 minutes</p><p class="mt-2 text-sm text-base-content/60">設置直後は運用開始まで待機</p></div>
     </div>
 
     <section class="mt-12">
-      <h2 class="text-2xl font-black">設置と所有者</h2>
-      <div class="mt-5 rounded-box border border-white/10 bg-base-200 p-6">
-        <ol class="list-inside list-decimal space-y-3 leading-8 text-base-content/80">
-          <li>プレイヤー検知ブロックを設置すると、設置したプレイヤーが所有者として登録されます。</li>
-          <li>所有者がブロックを操作すると、ホワイトリストと決済設定のGUIを開けます。</li>
-          <li>所有者以外が操作しても、設定の変更やGUIの利用はできません。</li>
-          <li>ブロックを破壊すると、登録されている検知用のダミーエンティティも削除されます。</li>
-        </ol>
-      </div>
+      <h2 class="text-2xl font-black">設置から稼働まで</h2>
+      <ol class="mt-5 list-inside list-decimal space-y-3 rounded-box border border-white/10 bg-base-200 p-6 leading-8 text-base-content/80">
+        <li>設置したプレイヤーが所有者になります。</li>
+        <li>所有者がブロックを右クリックし、GUIでホワイトリスト・名称・支払い設定を開きます。</li>
+        <li>支払い元となる銀行口座を指定して有効化します。稼働中は2時間ごとに金貨5枚が引き落とされます。</li>
+        <li>設置から20分経過し、支払い期限内で有効になっているときに運用状態になります。</li>
+      </ol>
+      <p class="mt-4 text-sm leading-7 text-base-content/60">口座の残高不足や口座情報の不備で支払いに失敗すると停止します。再開には支払い設定を確認してください。</p>
     </section>
 
     <section class="mt-12">
-      <h2 class="text-2xl font-black">プレイヤーの検知</h2>
+      <h2 class="text-2xl font-black">検知・通知の仕様</h2>
       <div class="mt-5 grid gap-4 md:grid-cols-2">
-        <div class="card border border-white/10 bg-base-200 p-6"><h3 class="text-xl font-bold">検知対象</h3><p class="mt-3 leading-8 text-base-content/75">検知範囲内にいるオンラインのプレイヤーを、約5秒ごとに確認します。所有者とホワイトリストに登録されたプレイヤーは検知対象から除外されます。</p></div>
-        <div class="card border border-white/10 bg-base-200 p-6"><h3 class="text-xl font-bold">通知</h3><p class="mt-3 leading-8 text-base-content/75">未登録のプレイヤーを検知すると、所有者とホワイトリスト登録者に、プレイヤー名とブロックからの距離が通知されます。</p></div>
-        <div class="card border border-white/10 bg-base-200 p-6"><h3 class="text-xl font-bold">発光表示</h3><p class="mt-3 leading-8 text-base-content/75">検知対象が30ブロック以内にいる場合、そのプレイヤーに発光表示を付与します。30ブロックを超えると発光表示は解除されます。</p></div>
-        <div class="card border border-white/10 bg-base-200 p-6"><h3 class="text-xl font-bold">有効化前の待機</h3><p class="mt-3 leading-8 text-base-content/75">設置直後はウォームアップ時間として20分間、プレイヤー検知を行いません。</p></div>
+        <div class="card border border-white/10 bg-base-200 p-6"><h3 class="text-xl font-bold">検知対象</h3><p class="mt-3 leading-8 text-base-content/75">半径100ブロック以内のオンラインプレイヤーを5秒ごとに確認します。所有者とホワイトリスト登録者は味方として扱われます。</p></div>
+        <div class="card border border-white/10 bg-base-200 p-6"><h3 class="text-xl font-bold">侵入通知</h3><p class="mt-3 leading-8 text-base-content/75">未登録のプレイヤーが範囲に入ると、所有者とホワイトリスト登録者に通知します。通知には座標ではなく、設定した検知ブロック名が表示されます。</p></div>
+        <div class="card border border-white/10 bg-base-200 p-6"><h3 class="text-xl font-bold">発光表示</h3><p class="mt-3 leading-8 text-base-content/75">検知された未登録プレイヤーには、検知ブロックから30ブロック以内にいる間、発光表示が付与されます。</p></div>
+        <div class="card border border-white/10 bg-base-200 p-6"><h3 class="text-xl font-bold">TPAとの連携</h3><p class="mt-3 leading-8 text-base-content/75">有効な検知ブロックの100ブロック以内にいる所有者・ホワイトリスト登録者は、TPAの到着地点になれます。詳細は<a href={`${base}/wiki/tpa/`} class="text-primary underline">TPA</a>を確認してください。</p></div>
       </div>
     </section>
 
     <section class="mt-12">
-      <h2 class="text-2xl font-black">ホワイトリスト設定</h2>
-      <div class="mt-5 rounded-box border border-white/10 bg-base-200 p-6">
+      <h2 class="text-2xl font-black">名称と基地管理者</h2>
+      <div class="mt-5 rounded-box border border-primary/20 bg-primary/10 p-6">
         <ul class="list-disc space-y-3 pl-5 leading-8 text-base-content/80">
-          <li>所有者専用のGUIから、プレイヤー名を追加・削除できます。</li>
-          <li>オンラインプレイヤーの一覧から、対象者を選んで登録することもできます。</li>
-          <li>ホワイトリストは所有者ごとに保存され、検知時の除外対象として利用されます。</li>
-          <li>所有者自身は、ホワイトリストに登録されていなくても常に除外されます。</li>
+          <li>所有者は各検知ブロックに、最大32文字の名称を設定できます。空欄に戻すと既定名で表示されます。</li>
+          <li>所有者は基地管理者を最大20人登録できます。登録は対象プレイヤーがオンラインのときに行います。</li>
+          <li>基地管理者は、所有者のホワイトリストを編集できます。共同で運用する国家・組織に便利です。</li>
+          <li>基地管理者は検知ブロック名の変更、支払い設定、ほかの基地管理者の追加・削除はできません。これらは所有者専用です。</li>
+          <li>ホワイトリストの変更は記録されます。必要な人だけを登録してください。</li>
         </ul>
       </div>
     </section>
 
     <section class="mt-12">
-      <h2 class="text-2xl font-black">決済と稼働状態</h2>
-      <div class="mt-5 rounded-box border border-secondary/30 bg-secondary/10 p-6">
-        <ul class="list-disc space-y-3 pl-5 leading-8 text-base-content/80">
-          <li>GUIの決済タブから、利用可能な銀行口座を選択できます。</li>
-          <li>稼働には、指定された銀行口座と決済設定が必要です。</li>
-          <li>決済額は2時間ごとに金貨5枚です。</li>
-          <li>決済に失敗すると、ブロックは自動的に停止し、所有者へ通知されます。</li>
-          <li>停止中はダミーエンティティが削除され、プレイヤー検知も行われません。</li>
-          <li>稼働中は、ダミーエンティティがブロック位置に表示されます。ただし通常のプレイヤーからは見えない設定です。</li>
-        </ul>
+      <h2 class="text-2xl font-black">注意</h2>
+      <div class="mt-5 rounded-box border border-error/30 bg-error/10 p-6 leading-8 text-base-content/80">
+        <p>チャンクの境界、Y座標、次元が異なる場所は検知範囲に含まれません。検知ブロックは、拠点の中心に近く、常時利用する場所に設置してください。停止中のブロックは侵入通知にもTPA到着地点にも使えません。</p>
       </div>
     </section>
-
-    <section class="mt-12">
-      <h2 class="text-2xl font-black">設置制限</h2>
-      <div class="mt-5 rounded-box border border-error/30 bg-error/10 p-6">
-        <p class="leading-8 text-base-content/80">既存のプレイヤー検知ブロックから、チャンク座標のX・Z方向の差が3以内となる位置には設置できません。近接した検知範囲が重なり、サーバー負荷や通知の重複が発生することを防ぐための制限です。</p>
-      </div>
-    </section>
-
-    <div class="alert mt-12 border border-primary/20 bg-primary/10"><span>このブロックを利用する場合は、検知対象となるプレイヤーへの配慮と、サーバー規約をあわせて確認してください。</span></div>
   </article>
 </BaseLayout>

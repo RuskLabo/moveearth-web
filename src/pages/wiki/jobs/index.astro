@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout title="Jobsシステム">
+  <article class="mx-auto max-w-4xl px-5 py-20 md:px-10">
+    <a href={`${base}/wiki/`} class="text-sm text-primary">← Wikiに戻る</a>
+    <p class="mono mt-12 text-sm text-secondary">MOVEEARTH-ADDTIONAL / JOBS</p>
+    <h1 class="mt-3 text-4xl font-black md:text-5xl">Jobsシステム</h1>
+    <p class="mt-6 max-w-3xl text-lg leading-9 text-base-content/80">Jobsは普段の採掘・農業・製作・戦闘を職業の経験値に変え、レベルとJob Pointを得るシステムです。専門分野を選び、文明を支える役割を育てましょう。</p>
+    <div class="mt-10 grid gap-4 md:grid-cols-3">
+      <div class="card border border-white/10 bg-base-200 p-5"><p class="mono text-xs text-secondary">ACTIVE JOBS</p><p class="mt-2 text-3xl font-black text-primary">2</p><p class="mt-2 text-sm text-base-content/60">同時に選択できる職業数</p></div>
+      <div class="card border border-white/10 bg-base-200 p-5"><p class="mono text-xs text-secondary">MAX LEVEL</p><p class="mt-2 text-3xl font-black text-primary">50</p><p class="mt-2 text-sm text-base-content/60">各職業共通の上限</p></div>
+      <div class="card border border-white/10 bg-base-200 p-5"><p class="mono text-xs text-secondary">LEVEL REWARD</p><p class="mt-2 text-3xl font-black text-primary">1 JP</p><p class="mt-2 text-sm text-base-content/60">レベルアップごとのJob Point</p></div>
+    </div>
+    <section class="mt-12"><h2 class="text-2xl font-black">職業一覧</h2><div class="mt-5 grid gap-4 md:grid-cols-2"><div class="card border border-white/10 bg-base-200 p-5"><h3 class="font-bold">鉱夫</h3><p class="mt-2 text-sm leading-7 text-base-content/70">石材・鉱石・ネザー資源・天界鉱石の採掘でXPを獲得します。</p></div><div class="card border border-white/10 bg-base-200 p-5"><h3 class="font-bold">木こり</h3><p class="mt-2 text-sm leading-7 text-base-content/70">自然に生成された原木の伐採でXPを獲得します。</p></div><div class="card border border-white/10 bg-base-200 p-5"><h3 class="font-bold">農夫</h3><p class="mt-2 text-sm leading-7 text-base-content/70">成熟した作物の収穫、農業ブロックの収穫、家畜の繁殖が対象です。</p></div><div class="card border border-white/10 bg-base-200 p-5"><h3 class="font-bold">狩人</h3><p class="mt-2 text-sm leading-7 text-base-content/70">対象Mobの討伐でXPを獲得します。危険なMobやボスほど高いXPです。</p></div><div class="card border border-white/10 bg-base-200 p-5"><h3 class="font-bold">クラフター</h3><p class="mt-2 text-sm leading-7 text-base-content/70">部品・装備・機械・高度なアイテムの製作が対象です。</p></div><div class="card border border-white/10 bg-base-200 p-5"><h3 class="font-bold">ガンスミス</h3><p class="mt-2 text-sm leading-7 text-base-content/70">TaCZの銃・アタッチメントの製作と、銃解体でXPを獲得します。</p></div></div></section>
+    <section class="mt-12"><h2 class="text-2xl font-black">経験値・Job Point</h2><div class="mt-5 rounded-box border border-white/10 bg-base-200 p-6"><ul class="list-disc space-y-3 pl-5 leading-8 text-base-content/80"><li>職業を選択している間だけ、その職業の行動がXPになります。外した職業の進行度は保存され、再選択すると続きから再開します。</li><li>必要XPはレベルが上がるほど増える曲線です。最大レベルは50です。</li><li>レベルアップごとにJob Pointを1点獲得します。Job Pointはショップで使います。</li><li>さらに、有効に得たXPが500に達するごとにJob Pointを1点獲得できます。この追加獲得は1時間に最大4点です。</li><li>同一プレイヤー・同一職業では、1分間の最初の500XPは通常どおり、それを超える分は10%のXPとして加算されます。</li></ul></div><p class="mt-4 text-sm leading-7 text-base-content/60">PvPアリーナ内の行動はJobs XPの対象外です。</p></section>
+    <section class="mt-12"><h2 class="text-2xl font-black">使い方・コマンド</h2><div class="mt-5 overflow-x-auto rounded-box border border-white/10 bg-base-200"><table class="table"><thead><tr><th>コマンド</th><th>内容</th></tr></thead><tbody><tr><td><code>/jobs</code></td><td>Jobs画面を開く</td></tr><tr><td><code>/jobs status</code></td><td>選択中の職業、XP、Job Point、追加Pointの進行状況を確認</td></tr><tr><td><code>/jobs list</code></td><td>利用できる職業を一覧表示</td></tr><tr><td><code>/jobs join &lt;職業&gt;</code></td><td>職業を選択する（同時に最大2つ）</td></tr><tr><td><code>/jobs leave &lt;職業&gt;</code></td><td>職業の選択を解除する</td></tr><tr><td><code>/jobs info &lt;職業&gt;</code></td><td>職業の説明と上限レベルを確認</td></tr><tr><td><code>/jobs top &lt;職業&gt;</code></td><td>職業別ランキングを表示</td></tr></tbody></table></div></section>
+  </article>
+</BaseLayout>
