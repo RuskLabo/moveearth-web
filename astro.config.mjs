@@ -3,6 +3,7 @@ import tailwind from '@astrojs/tailwind';
 import starlight from '@astrojs/starlight';
 import rehypeMermaid from 'rehype-mermaid';
 import remarkVoxel from './src/lib/voxel/remark-voxel.mjs';
+import remarkLinkPreview from './src/lib/preview/remark-link-preview.mjs';
 
 export default defineConfig({
   integrations: [
@@ -48,7 +49,10 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [remarkVoxel],
+    remarkPlugins: [
+      remarkVoxel,
+      [remarkLinkPreview, { root: './src/content/docs' }],
+    ],
     // Rendered to SVG during the build, so a diagram needs no client script and
     // still shows with JavaScript off. The cost is a headless browser in CI.
     //

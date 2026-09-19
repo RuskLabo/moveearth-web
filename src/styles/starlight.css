@@ -72,3 +72,48 @@ p > svg[id^='mermaid'] {
   font-size: 0.875rem;
   color: var(--sl-color-gray-3);
 }
+
+/* Link previews. The card is drawn from attributes the build put on the
+   anchor, so hovering costs no request and works with scripting off. */
+.sl-markdown-content a[data-preview-title] {
+  position: relative;
+}
+.sl-markdown-content a[data-preview-title]::after {
+  content: attr(data-preview-title) '\A' attr(data-preview-body);
+  white-space: pre-wrap;
+  position: absolute;
+  left: 0;
+  top: calc(100% + 0.5rem);
+  z-index: 40;
+  width: max-content;
+  max-width: min(22rem, 70vw);
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.4rem;
+  background: var(--sl-color-gray-6);
+  color: var(--sl-color-gray-2);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  /* Kept in the layout so it can be measured, but not shown or clickable
+     until it is wanted; visibility rather than display so it can fade. */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 120ms ease, visibility 120ms;
+  pointer-events: none;
+}
+/* Focus as well as hover, or the card is unreachable from the keyboard. */
+.sl-markdown-content a[data-preview-title]:hover::after,
+.sl-markdown-content a[data-preview-title]:focus-visible::after {
+  opacity: 1;
+  visibility: visible;
+}
+/* The first line is the page title and should read as one. */
+.sl-markdown-content a[data-preview-title]::first-line {
+  font-weight: 700;
+  color: var(--sl-color-white);
+}
+@media (prefers-reduced-motion: reduce) {
+  .sl-markdown-content a[data-preview-title]::after { transition: none; }
+}
