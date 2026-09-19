@@ -15,11 +15,12 @@ const base = import.meta.env.BASE_URL;
     <header class="navbar border-b border-white/10 bg-earth-950/90 px-5 md:px-10">
       <div class="flex-1"><a href={base} class="text-xl font-black tracking-widest">MOVE<span class="text-primary">EARTH</span></a></div>
       <nav class="hidden gap-2 md:flex">
+        <a href={`${base}/guide/start/`} class="btn btn-ghost">ガイド</a>
         <a href={`${base}/wiki/`} class="btn btn-ghost">Wiki</a>
         <a href={`${base}/join/`} class="btn btn-ghost">参加方法</a>
         <a href="https://discord.gg/QNquTTTdZh" class="btn btn-primary">Discord</a>
       </nav>
-      <div class="dropdown dropdown-end md:hidden"><button class="btn btn-ghost text-xl" aria-label="メニュー">☰</button><ul class="menu dropdown-content z-20 mt-3 w-48 rounded-box bg-base-200 p-2 shadow"><li><a href={`${base}/wiki/`}>Wiki</a></li><li><a href={`${base}/join/`}>参加方法</a></li><li><a href="https://discord.gg/QNquTTTdZh">Discord</a></li></ul></div>
+      <div class="dropdown dropdown-end md:hidden"><button class="btn btn-ghost text-xl" aria-label="メニュー">☰</button><ul class="menu dropdown-content z-20 mt-3 w-48 rounded-box bg-base-200 p-2 shadow"><li><a href={`${base}/guide/start/`}>ガイド</a></li><li><a href={`${base}/wiki/`}>Wiki</a></li><li><a href={`${base}/join/`}>参加方法</a></li><li><a href="https://discord.gg/QNquTTTdZh">Discord</a></li></ul></div>
     </header>
     <main><slot /></main>
     <script is:inline define:vars={{ base }}>

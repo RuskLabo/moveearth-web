@@ -32,6 +32,18 @@ export default defineConfig({
           label: 'リファレンス',
           autogenerate: { directory: 'reference' },
         },
+        // Starlight's own header only offers the site title as a way out, so
+        // the rest of the site is linked from here until the remaining pages
+        // have been moved across.
+        {
+          label: 'サイト内の他のページ',
+          items: [
+            // Written without the base path: Starlight prepends it, and
+            // including it here lands the reader on /moveearth-web/moveearth-web/.
+            { label: '個別システム（旧Wiki）', link: '/wiki/' },
+            { label: '参加方法', link: '/join/' },
+          ],
+        },
       ],
     }),
   ],

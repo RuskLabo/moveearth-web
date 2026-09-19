@@ -1,6 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL;
+// The guides live in the Starlight section, so their links are absolute rather
+// than built from a slug like the cards below.
+const guides = [
+  ['拠点を作る', '領土コアを置き、閉鎖を成立させる', '閉鎖判定・補強・維持費', 'guide/base'],
+  ['戦争をする', 'Siegeの開始から陥落、そして復興まで', 'タイマー・コア・破壊工作・負けたあと', 'guide/siege'],
+];
 const categories = [
   ['MoveEarthについて', 'この世界の舞台と遊び方を知る', '世界観・参加方法・ガイド', 'about'],
   ['ModernVoiceChat', 'MoveEarthの音声コミュニケーション基盤', '近接VC・無線・通信仕様', 'voice-chat'],
@@ -19,7 +25,15 @@ const categories = [
     <p class="mono text-sm text-primary">MOVEEARTH KNOWLEDGE BASE</p>
     <h1 class="mt-3 text-4xl font-black md:text-5xl">MoveEarth Wiki</h1>
     <p class="mt-5 max-w-2xl leading-8 text-base-content/70">MoveEarth独自のシステムや、サーバーでの遊び方をまとめています。MODそのものの詳しい仕様ではなく、MoveEarthでの使われ方を中心に説明します。</p>
-    <div class="mt-12 grid gap-4 md:grid-cols-2">
+    <p class="mono mt-12 text-sm text-secondary">GUIDES</p>
+    <h2 class="mt-2 text-2xl font-bold">まずはこの2つ</h2>
+    <div class="mt-5 grid gap-4 md:grid-cols-2">
+      {guides.map(([title, description, topics, path]) => <a href={`${base}/${path}/`} class="card border border-primary/40 bg-primary/10 p-6 transition hover:-translate-y-1 hover:border-primary"><p class="mono text-xs text-primary">GUIDE</p><h3 class="mt-3 text-2xl font-bold">{title}</h3><p class="mt-2 text-base-content/70">{description}</p><p class="mt-5 text-sm text-primary">{topics} →</p></a>)}
+    </div>
+
+    <p class="mono mt-14 text-sm text-secondary">SYSTEMS</p>
+    <h2 class="mt-2 text-2xl font-bold">個別システム</h2>
+    <div class="mt-5 grid gap-4 md:grid-cols-2">
       {categories.map(([title, description, topics, slug], index) => <a href={`${base}/wiki/${slug}/`} class="card border border-white/10 bg-base-200 p-6 transition hover:-translate-y-1 hover:border-primary/50"><p class="mono text-xs text-secondary">CATEGORY {String(index + 1).padStart(2, '0')}</p><h2 class="mt-3 text-2xl font-bold">{title}</h2><p class="mt-2 text-base-content/70">{description}</p><p class="mt-5 text-sm text-primary">{topics} →</p></a>)}
     </div>
   </section>
