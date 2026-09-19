@@ -48,13 +48,13 @@ stateDiagram-v2
 
 ## コアの状態
 
-コアへHPダメージが通るのは `EXPOSED` の間だけです。
+コアへHPダメージが通るのは**露出**の間だけです。
 
 ```mermaid
 stateDiagram-v2
-    state "ACTIVE" as active
-    state "EXPOSED" as exposed
-    state "FALLEN" as fallen
+    state "閉鎖" as active
+    state "露出" as exposed
+    state "陥落" as fallen
     [*] --> active
     active --> exposed : 閉鎖に穴があく
     exposed --> active : 塞ぎ直す
@@ -101,7 +101,7 @@ stateDiagram-v2
 
 ## コアが落ちたあとの30分
 
-コアHPが0になっても所有権はすぐ確定しません。30分の `FALLEN` フェーズに入り、
+コアHPが0になっても所有権はすぐ確定しません。30分の**陥落**フェーズに入り、
 補強保護が10分ごとに外側から停止していきます。
 
 | 経過 | 補強保護 |
@@ -122,7 +122,7 @@ stateDiagram-v2
 | 正規防衛メンバーがいない（傭兵だけ） | 半分の速度で減少 |
 
 ダウン・拘束・収監・死亡・スペクテイターは人数に入りません。
-成功するとコアは最大HPの25%で `EXPOSED` へ復帰します。確保地点は壊れた戦場のままなので、
+成功するとコアは最大HPの25%で**露出**へ復帰します。確保地点は壊れた戦場のままなので、
 閉鎖・補強・HP回復まで終わらせる必要があります。
 
 ### 30分を守り切られた場合
