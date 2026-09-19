@@ -30,8 +30,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # The Mermaid diagrams are rendered to SVG during the build, which needs a
+      # real browser. Without this step the build fails on the first page that
+      # has a diagram on it.
+      - name: Install Chromium for diagram rendering
+        run: npx playwright install --with-deps chromium
+
       - name: Check Astro project
         run: npm run check
+
+      - name: Test
+        run: npm test
 
       - name: Build
         run: npm run build

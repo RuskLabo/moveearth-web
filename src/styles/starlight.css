@@ -1,0 +1,74 @@
+/* Starlight's own tokens, pointed at the palette the rest of the site uses.
+   Restyling its components one by one would drift; these are the variables it
+   derives everything else from. */
+:root {
+  --sl-color-accent-low: #2a3a22;
+  --sl-color-accent: #75a84b;
+  --sl-color-accent-high: #c3e09a;
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #eef5e7;
+  --sl-color-gray-2: #c3ccbb;
+  --sl-color-gray-3: #8b9784;
+  --sl-color-gray-4: #4e5a48;
+  --sl-color-gray-5: #203126;
+  --sl-color-gray-6: #16211a;
+  --sl-color-black: #101713;
+  --sl-font: 'Zen Kaku Gothic New', sans-serif;
+  --sl-font-mono: 'IBM Plex Mono', monospace;
+}
+
+/* Diagrams are rendered as SVG at build time and have no background of their
+   own; without this they sit on the page with no separation from the prose. */
+.mermaid-diagram,
+p > svg[id^='mermaid'] {
+  display: block;
+  margin: 1.5rem auto;
+  padding: 1rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  background: var(--sl-color-gray-6);
+  max-width: 100%;
+  height: auto;
+}
+
+/* Voxel figures. The SVG is generated with no styling of its own so that the
+   page owns the framing, the same as the Mermaid diagrams above. */
+.voxel-figure {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  background: var(--sl-color-gray-6);
+}
+.voxel-title {
+  margin: 0 0 0.75rem;
+  font-weight: 700;
+  color: var(--sl-color-white);
+}
+.voxel-stage {
+  overflow-x: auto;
+  text-align: center;
+}
+.voxel-stage svg { max-width: 100%; height: auto; }
+.voxel-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  margin: 0.9rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.875rem;
+  color: var(--sl-color-gray-2);
+}
+.voxel-legend li { display: flex; align-items: center; gap: 0.45rem; }
+.voxel-swatch {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 0.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+.voxel-figure figcaption {
+  margin-top: 0.8rem;
+  font-size: 0.875rem;
+  color: var(--sl-color-gray-3);
+}
