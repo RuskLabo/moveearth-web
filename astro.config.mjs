@@ -23,7 +23,7 @@ export default defineConfig({
         { label: 'はじめに', items: [{ slug: 'guide/start' }] },
         {
           label: '拠点を作る',
-          items: [{ slug: 'guide/base' }],
+          items: [{ slug: 'guide/base' }, { slug: 'guide/fortress' }],
         },
         {
           label: '戦争をする',
