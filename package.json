@@ -11,7 +11,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "test": "node --test src/lib/**/*.test.mjs"
+    "test": "node --test src/lib/**/*.test.mjs",
+    "check:pages": "node tools/check-emphasis.mjs"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.37.7",

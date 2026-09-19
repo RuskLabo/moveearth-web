@@ -4,6 +4,7 @@ import starlight from '@astrojs/starlight';
 import rehypeMermaid from 'rehype-mermaid';
 import remarkVoxel from './src/lib/voxel/remark-voxel.mjs';
 import remarkLinkPreview from './src/lib/preview/remark-link-preview.mjs';
+import remarkRounds from './src/lib/chart/remark-rounds.mjs';
 
 export default defineConfig({
   integrations: [
@@ -27,7 +28,7 @@ export default defineConfig({
         },
         {
           label: '戦争をする',
-          items: [{ slug: 'guide/siege' }, { slug: 'guide/attack' }],
+          items: [{ slug: 'guide/siege' }, { slug: 'guide/attack' }, { slug: 'guide/recovery' }],
         },
         {
           label: 'リファレンス',
@@ -51,6 +52,7 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [
       remarkVoxel,
+      remarkRounds,
       [remarkLinkPreview, { root: './src/content/docs' }],
     ],
     // Rendered to SVG during the build, so a diagram needs no client script and

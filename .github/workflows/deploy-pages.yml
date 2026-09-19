@@ -45,6 +45,11 @@ jobs:
       - name: Build
         run: npm run build
 
+      # Markdown that fails to close an emphasis still builds and still
+      # deploys; the stars just appear on the page. This reads the output.
+      - name: Check built pages
+        run: npm run check:pages
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
