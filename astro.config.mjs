@@ -27,7 +27,7 @@ export default defineConfig({
         },
         {
           label: '戦争をする',
-          items: [{ slug: 'guide/siege' }],
+          items: [{ slug: 'guide/siege' }, { slug: 'guide/attack' }],
         },
         {
           label: 'リファレンス',
