@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap');
 
+/* Tailwind and daisyUI are pulled in here rather than injected globally.
+   The integration runs with applyBaseStyles disabled, because injecting the
+   base layer into Starlight's pages fights its own reset. That switch turns off
+   the whole stylesheet, not just the reset, so the directives have to live
+   somewhere -- and this file is imported by BaseLayout alone, which is exactly
+   the set of pages that want them. Starlight's pages never see it. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 :root { font-family: 'Zen Kaku Gothic New', sans-serif; }
 body { background: #101713; }
 .mono { font-family: 'IBM Plex Mono', monospace; }
