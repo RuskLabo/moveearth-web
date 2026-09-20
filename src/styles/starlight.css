@@ -153,3 +153,29 @@ p > svg[id^='mermaid'] {
   font-size: 0.875rem;
   color: var(--sl-color-gray-3);
 }
+
+/* The near wall of a cutaway diagram, and the switch that hides it. Hiding is a
+   class on the figure rather than a style on each face, so one toggle reaches
+   every face of the wall at once. */
+.voxel-figure.voxel-cutaway-hidden .voxel-cutaway {
+  display: none;
+}
+
+.voxel-cutaway-toggle {
+  display: block;
+  margin: 0.4rem auto 0;
+  padding: 0.15rem 0.7rem;
+  font: inherit;
+  font-size: 0.8125rem;
+  color: var(--sl-color-gray-2);
+  background: transparent;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.voxel-cutaway-toggle:hover,
+.voxel-cutaway-toggle:focus-visible {
+  color: var(--sl-color-white);
+  border-color: var(--sl-color-gray-3);
+}

@@ -52,6 +52,10 @@ export function renderVoxel(scene) {
   const ordered = [...blocks].sort((a, b) => (a.x + a.y + a.z) - (b.x + b.y + b.z));
 
   const faces = [];
+  // Cutaway faces go in their own list so the reader can be given a switch for
+  // them. They still have to be drawn in depth order with everything else, so
+  // each one remembers where it belonged.
+  const cutawayFaces = [];
   let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
   const track = (p) => {
     minX = Math.min(minX, p.x); maxX = Math.max(maxX, p.x);
@@ -59,8 +63,9 @@ export function renderVoxel(scene) {
   };
 
   for (const block of ordered) {
-    const { x, y, z, color, ghost } = block;
+    const { x, y, z, color, ghost, cutaway } = block;
     const opacity = ghost ? 0.28 : 1;
+    const into = cutaway ? cutawayFaces : faces;
     const o = project(x, y, z);
     // corners of this block's top face, clockwise from the far corner
     const top = [
@@ -72,19 +77,19 @@ export function renderVoxel(scene) {
     const drop = (p) => ({ x: p.x, y: p.y + TILE_Z });
 
     if (!occupied(index, x, y + 1, z)) {
-      faces.push(polygon(top, shade(color, 1.18), opacity));
+      into.push(polygon(top, shade(color, 1.18), opacity));
       top.forEach(track);
     }
     // the face towards the viewer on the +z side
     if (!occupied(index, x, y, z + 1)) {
       const quad = [top[2], top[3], drop(top[3]), drop(top[2])];
-      faces.push(polygon(quad, shade(color, 0.72), opacity));
+      into.push(polygon(quad, shade(color, 0.72), opacity));
       quad.forEach(track);
     }
     // and on the +x side
     if (!occupied(index, x + 1, y, z)) {
       const quad = [top[1], top[2], drop(top[2]), drop(top[1])];
-      faces.push(polygon(quad, shade(color, 0.92), opacity));
+      into.push(polygon(quad, shade(color, 0.92), opacity));
       quad.forEach(track);
     }
   }
@@ -92,8 +97,11 @@ export function renderVoxel(scene) {
   const pad = 14;
   const width = maxX - minX + pad * 2;
   const height = maxY - minY + pad * 2;
+  const cutaway = cutawayFaces.length
+    ? `<g class="voxel-cutaway">${cutawayFaces.join('')}</g>`
+    : '';
   const body = `<g transform="translate(${(pad - minX).toFixed(1)} ${(pad - minY).toFixed(1)})">`
-    + faces.join('') + '</g>';
+    + faces.join('') + cutaway + '</g>';
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width.toFixed(0)} ${height.toFixed(0)}"`
     + ` width="${width.toFixed(0)}" height="${height.toFixed(0)}" role="img"`
@@ -102,6 +110,9 @@ export function renderVoxel(scene) {
 
 const escapeAttr = (text) =>
   String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+/** True when the scene has a wall drawn see-through to look past. */
+const hasCutaway = (scene) => scene.blocks.some((block) => block.cutaway);
 
 export function renderFigure(scene) {
   const svg = renderVoxel(scene);
@@ -115,5 +126,12 @@ export function renderFigure(scene) {
     ? `<figcaption>${escapeAttr(scene.caption)}</figcaption>`
     : '';
   const title = scene.title ? `<p class="voxel-title">${escapeAttr(scene.title)}</p>` : '';
-  return `<figure class="voxel-figure">${title}<div class="voxel-stage">${svg}</div>${legend}${caption}</figure>`;
+  // Offered rather than imposed. The near wall is what shows the room is sealed,
+  // which is the point of half these diagrams; it is also what stands between
+  // the reader and the thing inside. Either can be the one they need.
+  const toggle = hasCutaway(scene)
+    ? '<button type="button" class="voxel-cutaway-toggle" aria-pressed="false">手前の壁を隠す</button>'
+    : '';
+  return `<figure class="voxel-figure">${title}<div class="voxel-stage">${svg}</div>`
+    + `${toggle}${legend}${caption}</figure>`;
 }

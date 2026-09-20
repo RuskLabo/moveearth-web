@@ -16,7 +16,12 @@
  *     #####
  */
 
-const LEGEND_LINE = /^\s*(\S)\s*=\s*([^#]*?)\s*(#[0-9a-fA-F]{3,8})?\s*(ghost)?\s*$/;
+// `ghost` is a block drawn see-through because it is not really there any more
+// -- a hole in a wall. `cutaway` is a block that is there, drawn see-through so
+// the reader can look past it into the room. They render alike and mean
+// opposite things, so the reader can be given a switch for one without the
+// other disappearing too.
+const LEGEND_LINE = /^\s*(\S)\s*=\s*([^#]*?)\s*(#[0-9a-fA-F]{3,8})?\s*(ghost|cutaway)?\s*$/;
 
 export function parseVoxel(source) {
   const lines = String(source).split('\n');
@@ -49,11 +54,12 @@ export function parseVoxel(source) {
       if (section === 'legend') {
         const entry = LEGEND_LINE.exec(line);
         if (entry) {
-          const [, char, label, color, ghost] = entry;
+          const [, char, label, color, modifier] = entry;
           legend.set(char, {
             label: label.trim(),
             color: color || '#4e5a48',
-            ghost: Boolean(ghost),
+            ghost: modifier === 'ghost' || modifier === 'cutaway',
+            cutaway: modifier === 'cutaway',
           });
         }
         continue;

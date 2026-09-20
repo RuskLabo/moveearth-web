@@ -18,6 +18,17 @@ export default defineConfig({
       defaultLocale: 'root',
       locales: { root: { label: '日本語', lang: 'ja' } },
       customCss: ['./src/styles/starlight.css'],
+      head: [{
+        tag: 'script',
+        content: `document.addEventListener('click', function (event) {
+          var button = event.target.closest('.voxel-cutaway-toggle');
+          if (!button) return;
+          var figure = button.closest('.voxel-figure');
+          var hidden = figure.classList.toggle('voxel-cutaway-hidden');
+          button.setAttribute('aria-pressed', String(hidden));
+          button.textContent = hidden ? '手前の壁を表示' : '手前の壁を隠す';
+        });`,
+      }],
       social: [{ icon: 'discord', label: 'Discord', href: 'https://discord.gg/QNquTTTdZh' }],
       pagination: true,
       sidebar: [
