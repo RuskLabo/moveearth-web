@@ -39,7 +39,8 @@ export default defineConfig({
         },
         {
           label: '戦争をする',
-          items: [{ slug: 'guide/siege' }, { slug: 'guide/attack' }, { slug: 'guide/recovery' }],
+          items: [{ slug: 'guide/siege' }, { slug: 'guide/attack' }, { slug: 'guide/siegecraft' },
+            { slug: 'guide/recovery' }],
         },
         {
           label: 'リファレンス',
