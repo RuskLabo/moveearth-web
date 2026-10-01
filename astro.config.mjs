@@ -32,32 +32,35 @@ export default defineConfig({
       social: [{ icon: 'discord', label: 'Discord', href: 'https://discord.gg/QNquTTTdZh' }],
       pagination: true,
       sidebar: [
-        { label: 'はじめに', items: [{ slug: 'guide/start' }] },
+        { label: 'はじめに', items: [
+          { slug: 'guide' }, { slug: 'guide/about' }, { slug: 'guide/start' },
+          { slug: 'guide/starter-kit' }, { slug: 'guide/survival' }, { slug: 'guide/faq' },
+        ] },
+        { label: '生産・交易', items: [
+          { slug: 'guide/industry' }, { slug: 'guide/jobs' }, { slug: 'guide/market' },
+          { slug: 'guide/balance' }, { slug: 'guide/gun-disassembly' },
+        ] },
         {
           label: '拠点を作る',
-          items: [{ slug: 'guide/base' }, { slug: 'guide/fortress' }],
+          items: [{ slug: 'guide/base' }, { slug: 'guide/fortress' }, { slug: 'guide/player-detector' }],
         },
         {
           label: '戦争をする',
           items: [{ slug: 'guide/siege' }, { slug: 'guide/attack' }, { slug: 'guide/siegecraft' },
+            { slug: 'guide/combat' }, { slug: 'guide/prisoners' }, { slug: 'guide/loot' },
             { slug: 'guide/recovery' }],
         },
+        { label: '探索・交流', items: [
+          { slug: 'guide/warehouse' }, { slug: 'guide/airship-raid' },
+          { slug: 'guide/events' }, { slug: 'guide/communication' },
+          { slug: 'guide/notifications' }, { slug: 'guide/streaming' },
+          { slug: 'guide/rules' }, { slug: 'guide/release' },
+        ] },
         {
           label: 'リファレンス',
           autogenerate: { directory: 'reference' },
         },
-        // Starlight's own header only offers the site title as a way out, so
-        // the rest of the site is linked from here until the remaining pages
-        // have been moved across.
-        {
-          label: 'サイト内の他のページ',
-          items: [
-            // Written without the base path: Starlight prepends it, and
-            // including it here lands the reader on /moveearth-web/moveearth-web/.
-            { label: '個別システム（旧Wiki）', link: '/wiki/' },
-            { label: '参加方法', link: '/join/' },
-          ],
-        },
+        { label: '参加', items: [{ label: '参加方法', link: '/join/' }] },
       ],
     }),
   ],

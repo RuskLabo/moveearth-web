@@ -1,4 +1,42 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
 ---
-<BaseLayout title="参加方法"><section class="mx-auto max-w-4xl px-5 py-20 md:px-10"><p class="mono text-sm text-primary">JOIN MOVEEARTH</p><h1 class="mt-3 text-4xl font-black">参加方法</h1><p class="mt-5 text-base-content/70">MoveEarthはMinecraft Java Edition専用サーバーです。</p><div class="mt-10 grid gap-5"><div class="card border border-white/10 bg-base-200 p-6"><p class="mono text-sm text-secondary">01 / EDITION</p><h2 class="mt-2 text-2xl font-bold">Java Editionを用意する</h2><p class="mt-3 text-base-content/70">PC版のMinecraft Java Editionをご利用ください。統合版・Bedrock Editionには対応していません。</p></div><div class="card border border-white/10 bg-base-200 p-6"><p class="mono text-sm text-secondary">02 / MODPACK</p><h2 class="mt-2 text-2xl font-bold">MoveEarth Modpackを導入する</h2><p class="mt-3 text-base-content/70">CurseForgeからMoveEarthのModpackを導入してください。</p><a href="https://www.curseforge.com/minecraft/modpacks/moveearth" class="btn btn-outline mt-5 w-fit">CurseForgeで見る</a></div><div class="card border border-white/10 bg-base-200 p-6"><p class="mono text-sm text-secondary">03 / SERVER</p><h2 class="mt-2 text-2xl font-bold">サーバーに接続する</h2><p class="mt-3 text-base-content/70">サーバーアドレスに以下を入力してください。</p><code class="mono mt-4 block rounded-lg bg-base-300 p-4 text-primary">devbase.ruskserver.com</code></div><div class="card border border-white/10 bg-base-200 p-6"><p class="mono text-sm text-secondary">04 / DISCORD</p><h2 class="mt-2 text-2xl font-bold">Discordに参加する</h2><p class="mt-3 text-base-content/70">最新情報、質問、プレイヤー同士の交流はDiscordで行います。</p><a href="https://discord.gg/QNquTTTdZh" class="btn btn-primary mt-5 w-fit">Discordへ参加する</a></div></div></section></BaseLayout>
+<BaseLayout title="参加方法" description="MoveEarthのModpack導入、サーバー接続、初回参加までの手順">
+  <section class="mx-auto max-w-4xl px-5 py-20 md:px-10">
+    <p class="mono text-sm text-primary">JOIN MOVEEARTH</p>
+    <h1 class="mt-3 text-4xl font-black">参加方法</h1>
+    <p class="mt-5 leading-8 text-base-content/70">Minecraft Java Edition 1.21.1・NeoForgeを使用します。サーバーの開放時間は毎日 <strong>19:00〜23:00 JST</strong> です。</p>
+    <div class="mt-10 grid gap-5">
+      <section class="card border border-white/10 bg-base-200 p-6">
+        <p class="mono text-sm text-secondary">01 / GAME</p><h2 class="mt-2 text-2xl font-bold">Java Editionを用意する</h2>
+        <p class="mt-3 leading-7 text-base-content/70">統合版・Bedrock Editionでは参加できません。</p>
+      </section>
+      <section class="card border border-white/10 bg-base-200 p-6">
+        <p class="mono text-sm text-secondary">02 / MODPACK</p><h2 class="mt-2 text-2xl font-bold">MoveEarth Modpackを導入・更新する</h2>
+        <p class="mt-3 leading-7 text-base-content/70">CurseForgeから公式Modpackの<strong>サーバー指定版</strong>を導入してください。Season 2 v3.2のサーバーにはv3.1以前のMoveEarthクライアントでは接続できません。配布ページの版番号とDiscordの公開告知を照合してください。</p>
+        <a href="https://www.curseforge.com/minecraft/modpacks/moveearth" class="btn btn-outline mt-5 w-fit">CurseForgeで見る</a>
+      </section>
+      <section class="card border border-white/10 bg-base-200 p-6">
+        <p class="mono text-sm text-secondary">03 / SERVER</p><h2 class="mt-2 text-2xl font-bold">開放時間に接続する</h2>
+        <p class="mt-3 leading-7 text-base-content/70">サーバーアドレスを入力します。接続先の変更が告知されている場合はDiscordの最新案内を優先してください。</p>
+        <code class="mono mt-4 block rounded-lg bg-base-300 p-4 text-primary">devbase.ruskserver.com</code>
+      </section>
+      <section class="card border border-white/10 bg-base-200 p-6">
+        <p class="mono text-sm text-secondary">04 / FIRST SESSION</p><h2 class="mt-2 text-2xl font-bold">建国か国家加入を選ぶ</h2>
+        <p class="mt-3 leading-7 text-base-content/70">初回画面では「自分で国を作る」「既存国家へ加入」を選びます。加入は相手国の承認制です。承認待ちの間も荒野で遊べます。建国は荒野から始め、設立地点の選択、首都コアと予約領土の作成、密閉防壁の施工へ進みます。</p>
+        <p class="mt-3 leading-7 text-base-content/70">ゲームに入ったら <strong>Nキー</strong>で国家ハブを開き、右側の初心者目標とバニラ進捗を確認してください。初期装備が届かないときは <code>/starterkit status</code> を使います。</p>
+        <a href={`${base}/guide/start/`} class="btn btn-outline mt-5 w-fit">最初の手順を見る</a>
+      </section>
+      <section class="card border border-white/10 bg-base-200 p-6">
+        <p class="mono text-sm text-secondary">05 / COMMUNITY</p><h2 class="mt-2 text-2xl font-bold">Discordで告知を確認する</h2>
+        <p class="mt-3 leading-7 text-base-content/70">パック更新、サーバーの稼働状況、質問と不具合報告はDiscordを確認してください。ゲーム内のDiscordアカウント連携は任意です。</p>
+        <a href="https://discord.gg/QNquTTTdZh" class="btn btn-primary mt-5 w-fit">Discordへ参加する</a>
+      </section>
+    </div>
+    <div class="mt-10 rounded-box border border-primary/20 bg-primary/10 p-6">
+      <h2 class="text-xl font-bold">追加MOD・トラブル</h2>
+      <p class="mt-3 leading-7 text-base-content/75">まず公式パックの構成で起動してください。公平性を損なう地図・透視・ESP等は導入しないでください。接続や初回参加で詰まったら<a href={`${base}/guide/faq/`} class="text-primary underline">よくある質問</a>と<a href={`${base}/guide/rules/`} class="text-primary underline">サーバー規約</a>を確認してください。</p>
+    </div>
+  </section>
+</BaseLayout>

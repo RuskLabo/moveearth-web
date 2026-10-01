@@ -1,0 +1,20 @@
+---
+const { target } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const [route, hash] = String(target).split('#', 2);
+const destination = `${base}/${route}/${hash ? `#${hash}` : ''}`;
+---
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content={`0;url=${destination}`} />
+    <link rel="canonical" href={new URL(destination, Astro.site).toString()} />
+    <title>MoveEarth ガイドへ移動</title>
+  </head>
+  <body>
+    <p>このページは<a href={destination}>MoveEarth ガイド</a>へ移動しました。</p>
+  </body>
+</html>
