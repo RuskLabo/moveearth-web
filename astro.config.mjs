@@ -32,10 +32,12 @@ export default defineConfig({
       social: [{ icon: 'discord', label: 'Discord', href: 'https://discord.gg/QNquTTTdZh' }],
       pagination: true,
       sidebar: [
-        { label: 'はじめに', items: [
+        { label: '基本', items: [
           { slug: 'guide/about' }, { slug: 'guide/start' },
-          { slug: 'guide/starter-kit' }, { slug: 'guide/survival' }, { slug: 'guide/faq' },
+          { slug: 'guide/starter-kit' }, { slug: 'guide/survival' }, { slug: 'guide/rules' },
+          { slug: 'guide/faq' },
         ] },
+        { label: '参加', items: [{ label: '参加方法', link: '/join/' }] },
         { label: '生産・交易', items: [
           { slug: 'guide/resources' }, { slug: 'guide/nether' },
           { slug: 'guide/industry' }, { slug: 'guide/jobs' }, { slug: 'guide/market' },
@@ -55,13 +57,11 @@ export default defineConfig({
           { slug: 'guide/warehouse' }, { slug: 'guide/airship-raid' },
           { slug: 'guide/events' }, { slug: 'guide/communication' },
           { slug: 'guide/notifications' }, { slug: 'guide/streaming' },
-          { slug: 'guide/rules' },
         ] },
         {
           label: 'リファレンス',
           autogenerate: { directory: 'reference' },
         },
-        { label: '参加', items: [{ label: '参加方法', link: '/join/' }] },
       ],
     }),
   ],

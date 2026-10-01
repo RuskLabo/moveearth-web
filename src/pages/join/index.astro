@@ -14,17 +14,17 @@ const base = import.meta.env.BASE_URL;
       </section>
       <section class="card border border-white/10 bg-base-200 p-6">
         <p class="mono text-sm text-secondary">02 / MODPACK</p><h2 class="mt-2 text-2xl font-bold">MoveEarth Modpackを導入・更新する</h2>
-        <p class="mt-3 leading-7 text-base-content/70">CurseForgeから公式Modpackの<strong>サーバー指定版</strong>を導入してください。古いクライアントでは接続できない場合があります。配布ページの版番号とDiscordの公開告知を照合してください。</p>
+        <p class="mt-3 leading-7 text-base-content/70">CurseForgeから公式Modpackの<strong>サーバー指定版</strong>を導入してください。<strong>MoveEarth 3.3（Season 2版）が必要です。</strong>v3.2以前のクライアントはログイン時に拒否されます。配布ページの版番号とDiscordの公開告知を照合してください。</p>
         <a href="https://www.curseforge.com/minecraft/modpacks/moveearth" class="btn btn-outline mt-5 w-fit">CurseForgeで見る</a>
       </section>
       <section class="card border border-white/10 bg-base-200 p-6">
         <p class="mono text-sm text-secondary">03 / SERVER</p><h2 class="mt-2 text-2xl font-bold">プレイできる時間に接続する</h2>
-        <p class="mt-3 leading-7 text-base-content/70">サーバーアドレスを入力します。接続先の変更が告知されている場合はDiscordの最新案内を優先してください。</p>
+        <p class="mt-3 leading-7 text-base-content/70">タイトル画面の<strong>「MoveEarth」</strong>ボタンを押すと、そのまま接続します。マルチプレイ画面から入る場合は次のアドレスを入力してください。プレイできる時間外はログインできません。接続先の変更が告知されている場合はDiscordの最新案内を優先してください。</p>
         <code class="mono mt-4 block rounded-lg bg-base-300 p-4 text-primary">devbase.ruskserver.com</code>
       </section>
       <section class="card border border-white/10 bg-base-200 p-6">
         <p class="mono text-sm text-secondary">04 / FIRST SESSION</p><h2 class="mt-2 text-2xl font-bold">建国か国家加入を選ぶ</h2>
-        <p class="mt-3 leading-7 text-base-content/70">初回画面では「自分で国を作る」「既存国家へ加入」を選びます。加入は相手国の承認制です。承認待ちの間も荒野で遊べます。建国は荒野から始め、設立地点の選択、首都コアと予約領土の作成、密閉防壁の施工へ進みます。</p>
+        <p class="mt-3 leading-7 text-base-content/70">初回画面では「国を作る」「国に入る」を選びます。加入は相手国の承認制です。承認待ちの間も荒野で遊べます。建国は荒野から始め、設立地点の選択、首都コアと予約領土の作成、密閉防壁の施工へ進みます。</p>
         <p class="mt-3 leading-7 text-base-content/70">ゲームに入ったら <strong>Nキー</strong>で国家ハブを開き、右側の初心者目標とバニラ進捗を確認してください。初期装備が届かないときは <code>/starterkit status</code> を使います。</p>
         <a href={`${base}/guide/start/`} class="btn btn-outline mt-5 w-fit">最初の手順を見る</a>
       </section>
@@ -36,7 +36,10 @@ const base = import.meta.env.BASE_URL;
     </div>
     <div class="mt-10 rounded-box border border-primary/20 bg-primary/10 p-6">
       <h2 class="text-xl font-bold">追加MOD・トラブル</h2>
-      <p class="mt-3 leading-7 text-base-content/75">まず公式パックの構成で起動してください。公平性を損なう地図・透視・ESP等は導入しないでください。接続や初回参加で詰まったら<a href={`${base}/guide/faq/`} class="text-primary underline">よくある質問</a>と<a href={`${base}/guide/rules/`} class="text-primary underline">サーバー規約</a>を確認してください。</p>
+      <p class="mt-3 leading-7 text-base-content/75">まず公式パックの構成で起動してください。公平性を損なう透視・ESP等は導入しないでください。</p>
+      <p class="mt-3 leading-7 text-base-content/75">地図はパックに入っているMap Atlasesを使います。次の地図・ミニマップMODが入っていると<strong>ゲームが起動しません</strong>。Xaero's Minimap（Fair-Play版を含む）、Xaero's World Map、JourneyMap、VoxelMap、FTB Chunks、Antique Atlas、Immersive Minimaps、Oaks Minimap、Project Minimap HUD。</p>
+      <p class="mt-3 leading-7 text-base-content/75">MoveEarthの表示設定は、MOD一覧から「MoveEarth」を選び「設定」で開けます。実験的なアンチエイリアス（SMAA、SMAA + FSR 1.0）は、Sodiumのビデオ設定にある「MoveEarth アンチエイリアス（実験的）」ページで切り替えます。初期状態はオフです。</p>
+      <p class="mt-3 leading-7 text-base-content/75">接続や初回参加で詰まったら<a href={`${base}/guide/faq/`} class="text-primary underline">よくある質問</a>と<a href={`${base}/guide/rules/`} class="text-primary underline">サーバー規約</a>を確認してください。</p>
     </div>
   </section>
 </BaseLayout>

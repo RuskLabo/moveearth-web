@@ -12,7 +12,7 @@ export function getStaticPaths() {
     'player-detector': 'guide/player-detector',
     'gun-disassembly': 'guide/gun-disassembly',
     'airship-raid': 'guide/airship-raid',
-    tpa: 'guide/faq#旧tpaコマンドが使えない',
+    tpa: 'guide/survival#地図と移動',
   };
   return Object.entries(destinations).map(([slug, target]) => ({
     params: { slug }, props: { target },
