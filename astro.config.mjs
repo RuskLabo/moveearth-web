@@ -14,7 +14,7 @@ export default defineConfig({
     // they already use.
     tailwind({ applyBaseStyles: false }),
     starlight({
-      title: 'MoveEarth Wiki',
+      title: 'MoveEarth ガイド',
       defaultLocale: 'root',
       locales: { root: { label: '日本語', lang: 'ja' } },
       customCss: ['./src/styles/starlight.css'],
@@ -33,7 +33,7 @@ export default defineConfig({
       pagination: true,
       sidebar: [
         { label: 'はじめに', items: [
-          { slug: 'guide' }, { slug: 'guide/about' }, { slug: 'guide/start' },
+          { slug: 'guide/about' }, { slug: 'guide/start' },
           { slug: 'guide/starter-kit' }, { slug: 'guide/survival' }, { slug: 'guide/faq' },
         ] },
         { label: '生産・交易', items: [
@@ -54,7 +54,7 @@ export default defineConfig({
           { slug: 'guide/warehouse' }, { slug: 'guide/airship-raid' },
           { slug: 'guide/events' }, { slug: 'guide/communication' },
           { slug: 'guide/notifications' }, { slug: 'guide/streaming' },
-          { slug: 'guide/rules' }, { slug: 'guide/release' },
+          { slug: 'guide/rules' },
         ] },
         {
           label: 'リファレンス',
