@@ -37,6 +37,7 @@ export default defineConfig({
           { slug: 'guide/starter-kit' }, { slug: 'guide/survival' }, { slug: 'guide/faq' },
         ] },
         { label: '生産・交易', items: [
+          { slug: 'guide/resources' },
           { slug: 'guide/industry' }, { slug: 'guide/jobs' }, { slug: 'guide/market' },
           { slug: 'guide/balance' }, { slug: 'guide/gun-disassembly' },
         ] },
