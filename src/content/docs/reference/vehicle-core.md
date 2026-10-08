@@ -1,6 +1,7 @@
 ---
 title: 車両コア
 description: Sable移動体に国家所有・600HP・補強・維持費を持たせる、持ち運べる拠点。
+items: [moveearth_addtional:vehicle_core]
 ---
 
 車両コアは、Sable移動体を**国家の資産**にする仕組みです。

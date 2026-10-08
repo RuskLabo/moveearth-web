@@ -1,6 +1,7 @@
 ---
 title: 市場と物資輸送
 description: 売り注文・買い注文と市場ステーションでの現地受け渡し。
+items: [moveearth_addtional:market_station]
 ---
 
 `/market` で商品・価格・注文・受取待ちを確認します。

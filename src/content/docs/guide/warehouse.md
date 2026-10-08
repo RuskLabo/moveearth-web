@@ -1,6 +1,7 @@
 ---
 title: 倉庫拠点の襲撃
 description: Warehouseの警備隊、ボス、全体通知、輸送コンテナの報酬。
+items: [moveearth_addtional:precision_firing_assembly]
 ---
 
 Warehouseはワールドに配置される敵対NPCの建造物です。

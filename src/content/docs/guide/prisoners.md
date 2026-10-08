@@ -1,6 +1,7 @@
 ---
 title: 捕虜・護送・収監
 description: ダウンした敵を拘束して護送し、牢獄受付へ収監する手順と救出方法。
+items: [moveearth_addtional:prison_intake, moveearth_addtional:restraints]
 ---
 
 捕虜は **ダウンした敵を拘束 → 護送 → 牢獄受付へ収監** する仕組みです。

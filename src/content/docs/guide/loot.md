@@ -1,6 +1,7 @@
 ---
 title: 略奪と残骸回収
 description: 陥落段階ごとの収納アクセス、金庫の保護、爆破された物資。
+items: [moveearth_addtional:storage_wreckage]
 ---
 
 Siege中でも、敵の収納を開ければ何でも持ち帰れるわけではありません。

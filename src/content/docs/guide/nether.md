@@ -1,6 +1,7 @@
 ---
 title: ネザー資源
 description: ネザーに行けないMoveEarthでのブレイズロッドとネザー系資源の入手方法。ゲート生成器と精製装置。
+items: [moveearth_addtional:gate_generator, moveearth_addtional:blaze_processing_machine, moveearth_addtional:nether_shard]
 ---
 
 MoveEarthでは通常のネザーポータルに入れません。

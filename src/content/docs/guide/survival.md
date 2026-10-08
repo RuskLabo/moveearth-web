@@ -1,6 +1,7 @@
 ---
 title: 生活と探索
 description: 気温、地下の酸素、休息回復、リスポーンと地図の基本。
+items: [moveearth_addtional:gas_mask, moveearth_addtional:carbon_filter]
 ---
 
 ## 気温を確認する

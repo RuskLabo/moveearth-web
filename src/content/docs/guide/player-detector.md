@@ -1,6 +1,7 @@
 ---
 title: プレイヤー検知ブロック
 description: 接近検知、ホワイトリスト、通知、TCによる稼働費。
+items: [moveearth_addtional:player_detector]
 ---
 
 基地の入口や交易拠点に置く警戒設備です。半径100ブロックのオンラインプレイヤーを5秒ごとに確認し、未登録者の侵入を通知します。

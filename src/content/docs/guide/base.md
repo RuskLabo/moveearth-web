@@ -1,6 +1,7 @@
 ---
 title: 拠点を作る
 description: 領土コアを置き、密閉を成立させ、維持する。
+items: [moveearth_addtional:territory_core, moveearth_addtional:welding_tool]
 ---
 
 拠点の中心は**領土コア**です。コアが守られている限り土地は自分のもので、
