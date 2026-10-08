@@ -5,6 +5,8 @@ import rehypeMermaid from 'rehype-mermaid';
 import remarkVoxel from './src/lib/voxel/remark-voxel.mjs';
 import remarkLinkPreview from './src/lib/preview/remark-link-preview.mjs';
 import remarkRounds from './src/lib/chart/remark-rounds.mjs';
+import { mermaidConfig } from './src/lib/mermaid/config.mjs';
+import sidebar from './src/sidebar.json' with { type: 'json' };
 
 export default defineConfig({
   integrations: [
@@ -31,38 +33,8 @@ export default defineConfig({
       }],
       social: [{ icon: 'discord', label: 'Discord', href: 'https://discord.gg/QNquTTTdZh' }],
       pagination: true,
-      sidebar: [
-        { label: '基本', items: [
-          { slug: 'guide/about' }, { slug: 'guide/start' },
-          { slug: 'guide/starter-kit' }, { slug: 'guide/survival' }, { slug: 'guide/rules' },
-          { slug: 'guide/faq' },
-        ] },
-        { label: '参加', items: [{ label: '参加方法', link: '/join/' }] },
-        { label: '生産・交易', items: [
-          { slug: 'guide/resources' }, { slug: 'guide/nether' },
-          { slug: 'guide/industry' }, { slug: 'guide/jobs' }, { slug: 'guide/market' },
-          { slug: 'guide/balance' }, { slug: 'guide/gun-disassembly' },
-        ] },
-        {
-          label: '拠点を作る',
-          items: [{ slug: 'guide/base' }, { slug: 'guide/fortress' }, { slug: 'guide/player-detector' }],
-        },
-        {
-          label: '戦争をする',
-          items: [{ slug: 'guide/siege' }, { slug: 'guide/attack' }, { slug: 'guide/siegecraft' },
-            { slug: 'guide/combat' }, { slug: 'guide/prisoners' }, { slug: 'guide/loot' },
-            { slug: 'guide/recovery' }],
-        },
-        { label: '探索・交流', items: [
-          { slug: 'guide/warehouse' }, { slug: 'guide/airship-raid' },
-          { slug: 'guide/events' }, { slug: 'guide/communication' },
-          { slug: 'guide/notifications' }, { slug: 'guide/streaming' },
-        ] },
-        {
-          label: 'リファレンス',
-          autogenerate: { directory: 'reference' },
-        },
-      ],
+      // Also read by MoveEarth's in-game wiki, for the same order and groups.
+      sidebar,
     }),
   ],
   markdown: {
@@ -82,26 +54,7 @@ export default defineConfig({
         rehypeMermaid,
         {
           strategy: 'inline-svg',
-          mermaidConfig: {
-            theme: 'base',
-            themeVariables: {
-              darkMode: true,
-              background: '#16211a',
-              primaryColor: '#203126',
-              primaryTextColor: '#eef5e7',
-              primaryBorderColor: '#75a84b',
-              secondaryColor: '#1b2a20',
-              tertiaryColor: '#16211a',
-              lineColor: '#8b9784',
-              textColor: '#eef5e7',
-              mainBkg: '#203126',
-              nodeBorder: '#75a84b',
-              clusterBkg: '#16211a',
-              clusterBorder: '#4e5a48',
-              edgeLabelBackground: '#101713',
-              fontFamily: "'Zen Kaku Gothic New', sans-serif",
-            },
-          },
+          mermaidConfig,
         },
       ],
     ],

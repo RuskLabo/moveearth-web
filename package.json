@@ -12,7 +12,8 @@
     "preview": "astro preview",
     "check": "astro check",
     "test": "node --test src/lib/**/*.test.mjs",
-    "check:pages": "node tools/check-emphasis.mjs && node tools/check-links.mjs"
+    "check:pages": "node tools/check-emphasis.mjs && node tools/check-links.mjs",
+    "ingame": "node tools/render-ingame-mermaid.mjs"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.37.7",
