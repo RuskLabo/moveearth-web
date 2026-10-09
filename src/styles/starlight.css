@@ -2,6 +2,8 @@
    Restyling its components one by one would drift; these are the variables it
    derives everything else from. */
 :root {
+  /* Native controls, scrollbars and form fields drawn dark to match. */
+  color-scheme: dark;
   --sl-color-accent-low: #2a3a22;
   --sl-color-accent: #75a84b;
   --sl-color-accent-high: #c3e09a;

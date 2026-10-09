@@ -20,6 +20,11 @@ export default defineConfig({
       defaultLocale: 'root',
       locales: { root: { label: '日本語', lang: 'ja' } },
       customCss: ['./src/styles/starlight.css'],
+      // Dark only; Starlight's light theme only half-applied over this palette.
+      components: {
+        ThemeProvider: './src/components/DarkThemeProvider.astro',
+        ThemeSelect: './src/components/NoThemeSelect.astro',
+      },
       head: [{
         tag: 'script',
         content: `document.addEventListener('click', function (event) {

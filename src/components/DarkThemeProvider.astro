@@ -1,0 +1,15 @@
+---
+// The site is dark only. Its palette, the voxel and rounds figures and the Mermaid theme are all made for a
+// dark page, and only the tokens in src/styles/starlight.css are set; Starlight's light theme applied over
+// them left a white header above a dark page, with the theme picker's label all but invisible. Readers
+// whose system asks for light, or who once picked it, get the dark page too.
+---
+
+{/* Inline, as Starlight's own provider is, so the page never flashes another theme. */}
+<script is:inline>
+	document.documentElement.dataset.theme = 'dark';
+	try {
+		localStorage.removeItem('starlight-theme');
+	} catch {}
+	window.StarlightThemeProvider = { updatePickers() {} };
+</script>
